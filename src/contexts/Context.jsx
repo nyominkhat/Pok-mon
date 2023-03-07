@@ -20,7 +20,11 @@ const ProductContext = ({ children }) => {
 
   function fetchData() {
     fetch(
-      `${API}?q=${setID === "" ? "" : `set.id:${setID}`} ${type === "" ? "" : `types:${type}`} ${rarity === "" ? "" : `rarity:${rarity}`} ${searchData === "" ? "" : `name:${searchData}`}&pageSize=${pageSizeLimit}`,
+      `${API}?q=${setID === "" ? "" : `set.id:${setID}`} ${
+        type === "" ? "" : `types:${type}`
+      } ${rarity === "" ? "" : `rarity:${rarity.split(" ").join("*")}`} ${
+        searchData === "" ? "" : `name:${searchData}`
+      }&pageSize=${pageSizeLimit}`,
       {
         method: "GET",
         headers: {
