@@ -12,7 +12,8 @@ const ProductContext = ({ children }) => {
   const [setID, setSetID] = useState("");
   const [rarity, setRarity] = useState("");
 
-  console.log(type, setID, rarity);
+  // console.log(type, setID, rarity);
+  // console.log("data", data);
 
   const [typeData, setTypeData] = useState([]);
   const [rarityData, setRarityData] = useState([]);
@@ -20,10 +21,10 @@ const ProductContext = ({ children }) => {
 
   function fetchData() {
     fetch(
-      `${API}?q=${setID === "" ? "" : `set.id:${setID}`} ${
+      `${API}?q= ${setID === "" ? "" : `set.id:${setID}`} ${
         type === "" ? "" : `types:${type}`
       } ${rarity === "" ? "" : `rarity:${rarity.split(" ").join("*")}`} ${
-        searchData === "" ? "" : `name:${searchData}`
+        searchData === "" ? "" : `name:${searchData}*`
       }&pageSize=${pageSizeLimit}`,
       {
         method: "GET",
