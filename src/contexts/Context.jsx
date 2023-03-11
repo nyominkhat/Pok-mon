@@ -5,19 +5,37 @@ const API = `${import.meta.env.VITE_API_URL}/cards`;
 const context = createContext();
 
 const ProductContext = ({ children }) => {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [pageSizeLimit, setPageSizeLimit] = useState(12);
+  const [pageSizeLimit, setPageSizeLimit] = useState(6);
   const [searchData, setSearchData] = useState("");
   const [type, setType] = useState("");
   const [setID, setSetID] = useState("");
   const [rarity, setRarity] = useState("");
-
-  // console.log(type, setID, rarity);
-  // console.log("data", data);
-
   const [typeData, setTypeData] = useState([]);
   const [rarityData, setRarityData] = useState([]);
   const [setsData, setSetsData] = useState([]);
+
+  function fetchTypeData() {
+    fetch("https://api.pokemontcg.io/v2/types")
+      .then((res) => res.json())
+      .then((type) => setTypeData(type.data))
+      .catch((error) => console.warn("Sorry!", error));
+  }
+
+  function fetchRarityData() {
+    fetch("https://api.pokemontcg.io/v2/rarities")
+      .then((res) => res.json())
+      .then((rarity) => setRarityData(rarity.data))
+      .catch((error) => console.warn("Sorry!", error));
+  }
+
+  function fetchSetsData() {
+    fetch("https://api.pokemontcg.io/v2/sets")
+      .then((res) => res.json())
+      .then((sets) => setSetsData(sets.data))
+      .catch((error) => console.warn("Sorry!", error));
+  }
 
   function fetchData() {
     fetch(
@@ -41,48 +59,25 @@ const ProductContext = ({ children }) => {
       .catch((error) => console.warn("Sorry!", error));
   }
 
-  function fetchTypeData() {
-    fetch("https://api.pokemontcg.io/v2/types")
-      .then((res) => res.json())
-      .then((type) => setTypeData(type.data))
-      .catch((error) => console.warn("Sorry!", error));
-  }
-
-  function fetchRarityData() {
-    fetch("https://api.pokemontcg.io/v2/rarities")
-      .then((res) => res.json())
-      .then((rarity) => setRarityData(rarity.data))
-      .catch((error) => console.warn("Sorry!", error));
-  }
-
-  function fetchSetsData() {
-    fetch("https://api.pokemontcg.io/v2/sets")
-      .then((res) => res.json())
-      .then((sets) => setSetsData(sets.data))
-      .catch((error) => console.warn("Sorry!", error));
-  }
-
   useEffect(() => {
-    fetchTypeData();
-    fetchRarityData();
-    fetchSetsData();
+    setLoading(true);
 
-    if (searchData !== "" || type !== "" || setID !== "" || rarity !== "") {
-      const getData = setTimeout(() => {
-        fetchData();
-      }, 1000);
+    setTimeout(() => {
+      fetchTypeData();
+      fetchRarityData();
+      fetchSetsData();
 
-      return () => clearTimeout(getData);
-    } else {
       fetchData();
-    }
+      setLoading(false);
+    }, 1000);
   }, [pageSizeLimit, searchData, type, setID, rarity]);
 
   const seeMore = () => {
-    setPageSizeLimit((prevState) => prevState + 10);
+    setPageSizeLimit((prevState) => prevState + 6);
   };
 
   const value = {
+    loading,
     pageSizeLimit,
     seeMore,
     data,

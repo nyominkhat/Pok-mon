@@ -6,15 +6,21 @@ const SelectCategories = () => {
     useProductContext();
 
   return (
-    <>
-      <select onChange={(e) => setType(e.target.value)}>
+    <section className="flex gap-2">
+      <select
+        className="border px-4 py-2 outline-none"
+        onChange={(e) => setType(e.target.value)}
+      >
         <option value="">Select Type</option>
         {typeData.map((item) => {
           return <option key={item}>{item}</option>;
         })}
       </select>
 
-      <select onChange={(e) => setRarity(e.target.value)}>
+      <select
+        className="border px-4 py-2 outline-none"
+        onChange={(e) => setRarity(e.target.value)}
+      >
         <option value="">Select Rarity</option>
 
         {rarityData.map((item) => {
@@ -22,14 +28,17 @@ const SelectCategories = () => {
         })}
       </select>
 
-      <select onChange={(e) => setSetID(e.target.value)}>
+      <select
+        className="border px-4 py-2 outline-none"
+        onChange={(e) => setSetID(e.target.value)}
+      >
         <option value="">Select Set</option>
 
         {setsData.map((item) => {
           return <option key={item.id}>{item.id}</option>;
         })}
       </select>
-    </>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ const SearchBox = () => {
   return (
     <input
       onChange={(e) => setSearchData(e.target.value)}
-      className="border p-2"
+      className="border p-2 rounded-md text-base py-2 outline-none px-4"
       type="text"
       value={searchData}
       placeholder="search with name"
