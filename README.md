@@ -8,6 +8,7 @@
 ### Build With
 
 - React Js
+- vite
 - Tailwind Css
 - react-spinners
 - tailwind-scrollbar
@@ -23,15 +24,20 @@
 ### Development
 
 1. Clone the repository and change directory.
-
 ```
 git clone https://github.com/nyominkhat/Pok-mon.git
 cd Pok-mon 
 ```
 
 2. Install npm dependencies.
+```
+npm install
+```
 
 3. Run the app locally.
+```
+npm run dev
+```
 
 
 
