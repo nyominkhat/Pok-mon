@@ -1,4 +1,4 @@
 # Pokemon
 
 
-![Tux, the Linux mascot]([/assets/images/tux.png](https://poke-show.netlify.app/))
+###Demo of poke  [Duck Duck Go]([https://duckduckgo.com](https://app.netlify.com/sites/poke-show/settings/general))
