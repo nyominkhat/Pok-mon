@@ -1,4 +1,4 @@
 # Pokemon
 
 
-### [Demo of poke]([https://duckduckgo.com](https://app.netlify.com/sites/poke-show/settings/general))
+### [Demo of poke](https://poke-show.netlify.app/)
