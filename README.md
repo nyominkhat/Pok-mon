@@ -7,7 +7,13 @@
 
 ### Build With
 
-- First item
-- Second item
-- Third item
-- Fourth item 
+- React Js
+- Tailwind Css
+- react-spinners
+- tailwind-scrollbar
+
+### Api
+
+- https://docs.pokemontcg.io/
+
+
