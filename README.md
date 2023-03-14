@@ -22,7 +22,9 @@
 
 ### Development
 
-1.
+1.Clone the repository and change directory.
+2.Install npm dependencies
+3.Run the app locally.
 
 
 
