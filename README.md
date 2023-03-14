@@ -23,6 +23,10 @@
 ### Development
 
 1.Clone the repository and change directory.<br/>
+``` git clone https://github.com/nyominkhat/Pok-mon.git 
+    cd Pok-mon
+```
+
 2.Install npm dependencies.<br/>
 3.Run the app locally.<br/>
 
