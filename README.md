@@ -23,7 +23,7 @@
 ### Development
 
 1. Clone the repository and change directory.
-``` git clone https://github.com/nyominkhat/Pok-mon.git ```
+Navigate to the project directory:
 ``` cd Pok-mon```
 
 
