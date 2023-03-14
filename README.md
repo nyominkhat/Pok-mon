@@ -16,4 +16,10 @@
 
 - https://docs.pokemontcg.io/
 
+### Features
+
+- Filtering with item's name,type,rarity and set
+
+
+
 
