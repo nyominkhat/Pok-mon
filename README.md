@@ -23,8 +23,8 @@
 ### Development
 
 1. Clone the repository and change directory.
-Navigate to the project directory:
-``` cd Pok-mon```
+
+```git clone https://github.com/nyominkhat/Pok-mon.git <br/> cd Pok-mon```
 
 
 2. Install npm dependencies.
