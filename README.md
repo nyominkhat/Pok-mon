@@ -22,14 +22,14 @@
 
 ### Development
 
-1. Clone the repository and change directory:
+1. Clone the repository and change directory.
 ``` git clone https://github.com/nyominkhat/Pok-mon.git 
     cd Pok-mon
 ```
 
-2. Install npm dependencies:
+2. Install npm dependencies.
 
-3. Run the app locally:
+3. Run the app locally.
 
 
 
