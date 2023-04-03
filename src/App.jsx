@@ -1,7 +1,7 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SearchBar from "./components/SearchBar";
-import { PokeContext } from "./contents/Contexts";
+import { PokeContext } from "./contents/Contents";
 import CardsSection from "./components/CardsSection";
 
 const queryClient = new QueryClient();
@@ -22,4 +22,3 @@ function App() {
 }
 
 export default App;
-

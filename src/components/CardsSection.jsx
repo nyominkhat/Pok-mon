@@ -1,13 +1,13 @@
 import React from "react";
 import { PuffLoader } from "react-spinners";
 
-import usePokeContext from "../contents/Contexts";
+import usePokeContext from "../contents/Contents";
 import Card from "./Card";
 
 const CardsSection = () => {
   const { cards, handleSeeMore, cardIsLoading } = usePokeContext();
   // console.log(cards);
-  console.count('count')
+  console.count("count");
 
   return (
     <section className="flex items-center flex-col justify-center h-[80vh] ">

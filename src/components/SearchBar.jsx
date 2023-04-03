@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import usePokeContext from "../contents/Contexts";
+import usePokeContext from "../contents/Contents";
 
 const SearchBar = () => {
   const {
@@ -9,7 +9,6 @@ const SearchBar = () => {
     setOptions,
     searchParameter,
     setSearchParameter,
-
   } = usePokeContext();
 
   // console.log(searchParameter);
