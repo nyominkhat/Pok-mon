@@ -22,7 +22,7 @@ const CardsSection = () => {
 
       {!cardIsLoading && cards.length === 0 && (
         <div className="flex items-center text-center h-[40vh] text-2xl font-bold">
-          Oh! <br /> Three is nothing to show😞
+          Oh! <br /> There is nothing to show😞
         </div>
       )}
 
