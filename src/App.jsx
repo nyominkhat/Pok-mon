@@ -23,14 +23,3 @@ function App() {
 
 export default App;
 
-// if (isLoading) {
-//   return (
-// <div className="fixed flex flex-col items-center justify-center w-screen h-screen">
-//   <PuffLoader color="#1D3160" speedMultiplier={1} />
-// </div>
-//   );
-// }
-
-// if (isError) {
-//   return <div>{error.message}</div>;
-// }
