@@ -3,7 +3,7 @@
 
 ### [Demo of poke](https://poke-show.netlify.app/)
 
-![Tux, the Linux mascot](https://res.cloudinary.com/nyominkhat/image/upload/v1678809578/poke_jgrgkq.png)
+![Tux, the Linux mascot](https://res.cloudinary.com/nyominkhat/image/upload/v1680484113/FireShot_Capture_002_-_Vite_React_-_127.0.0.1_k7gqa0.png)
 
 ### Build With
 
@@ -11,7 +11,8 @@
 - vite
 - Tailwind Css
 - react-spinners
-- tailwind-scrollbar
+- @tanstack/react-query
+- react-select
 
 ### Api
 
