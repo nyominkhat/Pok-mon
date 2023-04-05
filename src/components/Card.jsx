@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ data }) => {
+const Card = React.memo(({ data }) => {
   // console.log(data);
   return (
     <article className="border grid grid-cols-2 gap-4 p-2 rounded-md shadow-md md:hover:shadow-lg md:hover:scale-105 cursor-pointer transition-all">
@@ -32,6 +32,6 @@ const Card = ({ data }) => {
       </div>
     </article>
   );
-};
+});
 
 export default Card;

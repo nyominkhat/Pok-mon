@@ -16,8 +16,8 @@ export const useGetRarities = () => {
   return useQuery(["Rarities"], GetRarities);
 };
 
-export const useGetCards = (page, pageSize, searchParameter) => {
-  return useQuery(["Cards", page, pageSize, searchParameter], () =>
-    GetCards(page, pageSize, searchParameter)
+export const useGetCards = (pageSize, searchParameter, page) => {
+  return useQuery(["Cards", pageSize, searchParameter, page], () =>
+    GetCards(pageSize, searchParameter, page)
   );
 };

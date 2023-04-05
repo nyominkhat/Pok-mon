@@ -7,6 +7,8 @@ import CardsSection from "./components/CardsSection";
 const queryClient = new QueryClient();
 
 function App() {
+  // console.count("count");
+
   return (
     <QueryClientProvider client={queryClient}>
       <PokeContext>

@@ -1,6 +1,6 @@
 import URL from "./BaseUrl";
 
-const GetCards = async (page = 1, pageSize = 12, searchParameter) => {
+const GetCards = async (pageSize = 12, searchParameter, page = 1) => {
   const requestOptions = {
     headers: {
       Accept: "application/json",
