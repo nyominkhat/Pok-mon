@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Select from "react-select";
 import usePokeContext from "../contents/Contents";
-import { useGetRarities, useGetSets, useGetTypes } from "../hooks";
+import URL from "../api/BaseUrl";
 
 const SearchBar = () => {
   const { searchParameter, setSearchParameter, setFilter, cardIsLoading } =
@@ -10,54 +10,41 @@ const SearchBar = () => {
   const [setOptions, setSetOptions] = useState([]);
   const [rarityOptions, setRarityOptions] = useState([]);
 
-  const {
-    data: typeDatas,
-    isError: typeIsError,
-    isLoading: typeIsLoading,
-    error: typeError,
-    refetch: typeRefetch,
-  } = useGetTypes();
+  const getTypes = async () => {
+    const typeDatas = await fetch(`${URL}types`);
+    const data = await typeDatas.json();
+    setTypeOptions(
+      data.data.map((item) => {
+        return { value: item, label: item };
+      })
+    );
+  };
 
-  const {
-    data: setDatas,
-    isError: setIsError,
-    isLoading: setIsLoading,
-    error: setError,
-    refetch: setRefetch,
-  } = useGetSets();
+  const getRarities = async () => {
+    const typeDatas = await fetch(`${URL}rarities`);
+    const data = await typeDatas.json();
+    setRarityOptions(
+      data.data.map((item) => {
+        return { value: item, label: item };
+      })
+    );
+  };
 
-  const {
-    data: rarityDatas,
-    isError: rarityIsError,
-    isLoading: rarityIsLoading,
-    error: rarityError,
-    refetch: rarityRefetch,
-  } = useGetRarities();
+  const getSets = async () => {
+    const typeDatas = await fetch(`${URL}sets`);
+    const data = await typeDatas.json();
+    setSetOptions(
+      data.data.map((item) => {
+        return { value: item.id, label: item.name };
+      })
+    );
+  };
 
   useEffect(() => {
-    if (!typeIsLoading && !typeIsError) {
-      const data = typeDatas.data.map((item) => {
-        return { value: item, label: item };
-      });
-      setTypeOptions(data);
-    }
-
-    if (!setIsLoading && !setIsError) {
-      const data = setDatas.data.map((item) => {
-        return { value: item.id, label: item.name };
-      });
-      setSetOptions(data);
-    }
-
-    if (!rarityIsLoading && !rarityError) {
-      const data = rarityDatas.data.map((item) => {
-        return { value: item, label: item };
-      });
-      setRarityOptions(data);
-    }
-  }, [typeDatas, setDatas, rarityDatas]);
-
-  console.count("count");
+    getTypes();
+    getRarities();
+    getSets();
+  }, []);
 
   const inputRef = useRef(null);
 
@@ -83,18 +70,19 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="flex items-center mt-10 justify-between gap-4 max-h-[10vh]">
+    <div className="flex items-center justify-center flex-wrap lg:items-start lg:mt-10 mt-5 lg:justify-between lg:gap-4 gap-2 max-h-[10vh] p-1">
       <input
         type="text"
         placeholder="Search with name ..."
-        className="border outline-none py-1.5 px-3 rounded-md w-1/3"
+        className="border outline-none py-1.5 px-3 rounded-md w-full sm:w-96 lg:w-auto"
         disabled={cardIsLoading}
         ref={inputRef}
         onChange={(e) => setFilter(e.target.value)}
       />
 
-      <div className="grid grid-cols-3 w-1/2  gap-4">
+      <div className="flex items-center justify-start sm:gap-4 gap-1 w-[40rem]">
         <Select
+          className="text-xs sm:text-base w-1/3"
           closeMenuOnSelect={true}
           placeholder="Select a Type..."
           options={typeOptions}
@@ -102,6 +90,7 @@ const SearchBar = () => {
           onChange={handleType}
         />
         <Select
+          className="text-xs sm:text-base w-1/3"
           closeMenuOnSelect={true}
           placeholder="Select a Rarity..."
           options={rarityOptions}
@@ -109,6 +98,7 @@ const SearchBar = () => {
           onChange={handleRarity}
         />
         <Select
+          className="text-xs sm:text-base w-1/3"
           closeMenuOnSelect={true}
           placeholder="Select a Set..."
           options={setOptions}

@@ -46,7 +46,7 @@ export const PokeContext = ({ children }) => {
     }, 1000);
 
     return () => clearTimeout(getData);
-  }, [filter]);
+  }, [filter ,searchParameter.type ,searchParameter.set ,searchParameter.rarity]);
 
   function handleSeeMore() {
     setPageSize((prev) => prev + 12);
