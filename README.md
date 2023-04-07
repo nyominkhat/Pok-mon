@@ -1,7 +1,7 @@
 # Pokemon
 
 
-### [Demo of poke](https://master--funny-chimera-ec145b.netlify.app/)
+### [Demo of poke](https://pokemon-challenge-nmk.netlify.app/)
 
 ![Tux, the Linux mascot](https://res.cloudinary.com/nyominkhat/image/upload/v1680484113/FireShot_Capture_002_-_Vite_React_-_127.0.0.1_k7gqa0.png)
 
