@@ -5,7 +5,7 @@ import CardsSection from "./components/CardsSection";
 import usePokeContext from "./contents/Contents";
 
 function App() {
-  console.count("count");
+  // console.count("count");
   const { handleSeeMore, cardIsLoading } = usePokeContext();
 
   return (

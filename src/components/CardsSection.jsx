@@ -11,11 +11,11 @@ const CardsSection = React.memo(() => {
 
   return (
     <section className="flex items-center flex-col justify-center h-[76vh] lg:h-[80vh] ">
-      {cards.length === 0 ? null : (
+      {/* {cards.length === 0 ? null : (
         <div className="fixed left-5 top-5 border border-violet-900 p-2 lg:flex hidden">
           {cards.length}
         </div>
-      )}
+      )} */}
 
       {!cardIsLoading && cards.length === 0 && (
         <div className="flex items-center text-center h-[40vh] text-2xl font-bold">
