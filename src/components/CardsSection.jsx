@@ -1,36 +1,69 @@
-import React from "react";
-import { PuffLoader } from "react-spinners";
+import React, { useEffect } from "react";
 
 import usePokeContext from "../contents/Contents";
 import Card from "./Card";
 
 const CardsSection = React.memo(() => {
-  const { cards, cardIsLoading } = usePokeContext();
-  // console.log(cards);
-  // console.count("count");
+  const { cards, cardIsLoading, handleSeeMore, loading } = usePokeContext();
+
+  const handleScroll = () => {
+    if (cards.length > 0 && cards.length < 250) {
+      return;
+    }
+
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    ) {
+      handleSeeMore();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  if (!cardIsLoading && cards.length === 0) {
+    return (
+      <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center text-center text-2xl font-bold">
+        Oh! <br /> There is nothing to show😞
+      </div>
+    );
+  }
 
   return (
-    <section className="flex items-center flex-col justify-center h-[76vh] lg:h-[80vh] ">
-      {/* {cards.length === 0 ? null : (
-        <div className="fixed left-5 top-5 border border-violet-900 p-2 lg:flex hidden">
-          {cards.length}
-        </div>
-      )} */}
-
-      {!cardIsLoading && cards.length === 0 && (
-        <div className="flex items-center text-center h-[40vh] text-2xl font-bold">
-          Oh! <br /> There is nothing to show😞
-        </div>
-      )}
-
+    <div className="h-full w-full overflow-y-auto overflow-x-hidden">
       {cards.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 h-full overflow-x-hidden overflow-y-auto p-4  rounded-md shadow-[inset_0_-2px_4px_rgba(0,0,0,0.5)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 p-4">
           {cards.map((item) => (
             <Card key={item.images.small} data={item} />
           ))}
         </div>
       )}
-    </section>
+
+      <div className="absolute bottom-0 left-0 w-full h-[5rem] overflow-hidden">
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 container mx-auto ">
+            <div className="max-w-sm animate-pulse">
+              <div className="border grid grid-cols-2 gap-4 p-2 rounded-t-md shadow-md h-[5rem] bg-gray-200 dark:bg-gray-400"></div>
+            </div>
+            <div className="max-w-sm animate-pulse">
+              <div className="border grid grid-cols-2 gap-4 p-2 rounded-t-md shadow-md h-[5rem] bg-gray-200 dark:bg-gray-400"></div>
+            </div>
+            <div className="max-w-sm animate-pulse">
+              <div className="border grid grid-cols-2 gap-4 p-2 rounded-t-md shadow-md h-[5rem] bg-gray-200 dark:bg-gray-400"></div>
+            </div>
+            <div className="max-w-sm animate-pulse">
+              <div className="border grid grid-cols-2 gap-4 p-2 rounded-t-md shadow-md h-[5rem] bg-gray-200 dark:bg-gray-400"></div>
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>
   );
 });
 

@@ -18,6 +18,7 @@ export const PokeContext = ({ children }) => {
     set: "",
   });
   const [filter, setFilter] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const {
     data: cardDatas,
@@ -30,6 +31,7 @@ export const PokeContext = ({ children }) => {
   useEffect(() => {
     if (!cardIsLoading && !cardIsError) {
       setCards([...cardDatas.data]);
+      setLoading(false);
     }
   }, [cardDatas]);
 
@@ -46,9 +48,15 @@ export const PokeContext = ({ children }) => {
     }, 1000);
 
     return () => clearTimeout(getData);
-  }, [filter ,searchParameter.type ,searchParameter.set ,searchParameter.rarity]);
+  }, [
+    filter,
+    searchParameter.type,
+    searchParameter.set,
+    searchParameter.rarity,
+  ]);
 
   function handleSeeMore() {
+    setLoading(true);
     setPageSize((prev) => prev + 12);
   }
 
@@ -60,7 +68,7 @@ export const PokeContext = ({ children }) => {
     setSearchParameter,
     filter,
     setFilter,
-    cardIsLoading,
+    loading,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

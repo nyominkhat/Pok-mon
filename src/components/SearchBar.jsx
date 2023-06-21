@@ -70,7 +70,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="flex items-center justify-center flex-wrap lg:items-start lg:mt-10 mt-5 lg:justify-between lg:gap-4 gap-2 max-h-[10vh] p-1">
+    <div className="flex container mx-auto items-center justify-center flex-wrap lg:items-start lg:justify-between lg:gap-4 gap-2 p-1">
       <input
         type="text"
         placeholder="Search with name ..."
